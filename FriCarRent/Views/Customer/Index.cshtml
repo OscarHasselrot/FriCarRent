@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Customer Dashboard";
+}
+
+<h1>Mina Sidor</h1>
+<h2>@Context.Session.GetString("UserName")</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Mina uppgifter</h5>
+                <p class="card-text">Se och redigera mina uppgifter</p>
+                <a asp-action="Details" asp-controller="Customer" class="btn btn-primary">Gå till mina uppgifter</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Mina bokningar</h5>
+                <p class="card-text">Se och redigera mina bokningar</p>
+                <a asp-action="Index" asp-controller="Booking" class="btn btn-primary">Gå till bokningar</a>
+            </div>
+        </div>
+    </div>
+</div>

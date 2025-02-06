@@ -1,0 +1,64 @@
+﻿@model FriCarRent.ViewModels.LoginRegisterViewModel
+
+@{
+    ViewData["Title"] = "LoginRegister";
+    
+}
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <h1>Logga in</h1>
+        <form asp-action="Login" asp-controller="Customer" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" asp-for="LoginVM.ReturnUrl" value="@ViewBag.ReturnUrl" />
+
+            <div class="form-group">
+                <label asp-for="LoginVM.Email" class="control-label">E-post</label>
+                <input asp-for="LoginVM.Email" class="form-control" placeholder="E-post" />
+                <span asp-validation-for="@Model.LoginVM.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LoginVM.Password" class="control-label">Lösenord</label>
+                <input asp-for="LoginVM.Password" class="form-control" type="password" placeholder="Lösenord" />
+                <span asp-validation-for="@Model.LoginVM.Password" class="text-danger"></span>
+            </div>
+            <p class="text-danger">@ViewBag.Message</p>
+            <div class="form-group">
+                <input type="submit" value="Logga in" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <h1>Registrera</h1>
+        <form asp-action="Register" asp-controller="Customer" method="post">
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" asp-for="CreateUserVM.ReturnUrl" value="@ViewBag.ReturnUrl" />
+            <div class="form-group">
+                <label asp-for="CreateUserVM.FirstName" class="control-label">Förnamn</label>
+                <input asp-for="CreateUserVM.FirstName" class="form-control" placeholder="Förnamn" />
+                <span asp-validation-for="@Model.CreateUserVM.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreateUserVM.LastName" class="control-label">Efternamn</label>
+                <input asp-for="CreateUserVM.LastName" class="form-control" placeholder="Efternamn" />
+                <span asp-validation-for="@Model.CreateUserVM.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreateUserVM.Email" class="control-label">E-post</label>
+                <input asp-for="CreateUserVM.Email" class="form-control" placeholder="E-post" />
+                <span asp-validation-for="@Model.CreateUserVM.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreateUserVM.Password" class="control-label">Lösenord</label>
+                <input asp-for="CreateUserVM.Password" class="form-control" placeholder="Lösenord" />
+                <span asp-validation-for="@Model.CreateUserVM.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Registrera" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

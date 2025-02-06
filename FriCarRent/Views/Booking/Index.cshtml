@@ -1,0 +1,76 @@
+﻿@model IEnumerable<FriCarRent.ViewModels.BookingsViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Alla bokningar</h1>
+<h1 class="text-danger">@ViewBag.Message</h1>
+<h1 class="text-success">@ViewBag.MessageSuccess</h1>
+<p>
+    <a class="btn btn-primary" asp-action="Create">Skapa ny bokning</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                E-post
+            </th>
+            <th>
+                Bil
+            </th>
+            <th>
+                Startdatum
+            </th>
+            <th>
+                Slutdatum
+            </th>
+            <th>
+                Totalt pris
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)kr
+                </td>
+                <td>
+                    @if (Context.Session.GetString("Role") == "Customer")
+                    {
+                        if (item.StartDate >= DateTime.Now)
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Redigera</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Radera</a>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary" disabled>Redigera</button>
+                            <button class="btn btn-danger" disabled>Radera</button>
+                        }
+                    }
+                    @if (Context.Session.GetString("Role") == "Admin")
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id @item.CarId" class="btn btn-primary">Redigera</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Radera</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

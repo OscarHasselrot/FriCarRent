@@ -1,0 +1,44 @@
+﻿@model IEnumerable<FriCarRent.Models.Car>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Våra bilar</h1>
+
+<p>
+    @if (Context.Session.GetString("Role") == "Admin")
+    {
+        <a class="btn btn-primary" asp-action="Create">Lägg till bil</a>
+    }
+</p>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card h-100">
+                <img src="@item.Image" class="card-img-top" alt="@item.Model">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Brand </h5>
+                    <p class="card-text">@item.Model</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Årsmodell: @(item.Year)</li>
+                        <li class="list-group-item">Pris: @(item.Price)kr/dag</li>
+                    </ul>
+                    <div class="card-body">
+                        <a class="btn btn-primary" asp-action="Book" asp-route-id="@item.Id">Boka</a>
+                        @if (Context.Session.GetString("Role") == "Admin")
+                        {
+                            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Redigera</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Radera</a>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,50 @@
+﻿@model FriCarRent.Models.Customer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detaljer</h1>
+
+<div>
+    <h4>Kund</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+           Förnamn
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            Efternamn
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            E-post
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        @* <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Password)
+        </dd >*@
+    </dl>
+</div>
+<div>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.Id">Redigera</a> 
+    @if (Context.Session.GetString("Role") == "Admin")
+    {
+        <a class="btn btn-primary" asp-action="AllCustomers">Alla kunder</a>
+    }
+    @if (Context.Session.GetString("Role") == "Customer")
+    {
+        <a class="btn btn-primary" asp-action="Index">Mina Sidor</a>
+
+    }
+</div>
