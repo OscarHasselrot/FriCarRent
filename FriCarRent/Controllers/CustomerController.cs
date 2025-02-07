@@ -41,7 +41,7 @@ namespace FriCarRent.Controllers
             }
             else
             {
-                ViewBag.Message = "Du har inte rätt behörighet.";
+                ViewBag.Message = "Du har inte rätt behörighet";
                 return RedirectToAction("Index", "Home");
             }
         }
@@ -95,6 +95,7 @@ namespace FriCarRent.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
         [HttpPost]
         public ActionResult Register([Bind(Prefix = "CreateUserVM")] CreateUserViewModel createUserVM)
         {

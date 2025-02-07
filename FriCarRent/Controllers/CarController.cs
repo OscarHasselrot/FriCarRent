@@ -103,6 +103,7 @@ namespace FriCarRent.Controllers
 
             try
             {
+                ViewBag.Message = "Bil borttagen";
                 carRepository.Delete(car);
                 return RedirectToAction(nameof(Index));
             }

@@ -311,7 +311,7 @@ namespace FriCarRent.Controllers
         {
             try
             {
-                ViewBag.MessageSuccess = "Bokning borttagen.";
+                ViewBag.MessageSuccess = "Bokning borttagen";
                 bookingRepository.Delete(booking);
                 return RedirectToAction(nameof(Index));
             }
