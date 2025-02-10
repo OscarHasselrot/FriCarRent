@@ -21,8 +21,8 @@ namespace FriCarRent.Controllers
         
         public ActionResult Logout()
         {
-            HttpContext.Session.Clear(); // Clears all session data
-            return Redirect(Request.Headers["Referer"].ToString() ?? "/"); // Redirect back to previous page
+            HttpContext.Session.Clear(); 
+            return Redirect(Request.Headers["Referer"].ToString() ?? "/");
         }
 
         public IActionResult Privacy()

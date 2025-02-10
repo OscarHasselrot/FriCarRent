@@ -9,12 +9,12 @@ $(document).ready(function () {
 
         if (startDate && endDate && endDate < startDate) {
             alert("Slutdatum kan inte vara före startdatum!");
-            $("#EndDate").val(""); // Rensar felaktigt datum
+            $("#EndDate").val(""); 
         }
     });
 });
 function clearSession() {
     fetch('/Home/Logout', { method: 'POST' })
-        .then(response => window.location.reload()) // Refresh page after clearing session
+        .then(response => window.location.reload()) 
         .catch(error => console.error('Error:', error));
 }

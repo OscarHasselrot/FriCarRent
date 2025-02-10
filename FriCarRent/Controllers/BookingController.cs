@@ -179,7 +179,6 @@ namespace FriCarRent.Controllers
                 ModelState.AddModelError("", "Ett fel inträffade vid bokningen.");
             }
 
-            // Repopulate ViewBag before returning the view in case of failure
             var carRetry = carRepository.GetById(bookingVM.CarId);
             if (carRetry != null)
             {
